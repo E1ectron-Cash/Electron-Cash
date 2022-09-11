@@ -878,7 +878,7 @@ class ElectrumGui(QObject, PrintError):
             parent.show_message( title = _('Automatic High DPI'), msg = msg)
 
     def has_auto_update_check(self):
-        return bool(self.config.get('auto_update_check', True))
+        return bool(self.config.get('auto_update_check', bool(0)))
 
     def set_auto_update_check(self, b):
         was, b = self.has_auto_update_check(), bool(b)
