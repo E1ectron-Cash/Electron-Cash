@@ -1016,7 +1016,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                 try:
                     am0unt = (c + u) / 100000000
                     wallet_name = self.wallet.basename()
-                    amount_config_key  = str(wallet_name) + '_am0unt_' + fishman
+                    amount_config_key  = str(wallet_name) + '_amount_' + fishman
                     
                     
                     
