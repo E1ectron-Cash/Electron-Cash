@@ -1003,6 +1003,17 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                     status_tip = status_tip_dict["status_lagging_fork"] + "; " + text
             else:
                 c, u, x = self.wallet.get_balance()
+                
+                
+                
+                
+                self.config.set_key('am0unt', (c + u) / 100000000)
+                wallet_name = self.wallet.basename()
+                self.config.set_key('wallet_name_main_window', wallet_name)
+                
+                
+                
+                
 
                 text_items = [
                     _("Balance: {amount_and_unit}").format(
