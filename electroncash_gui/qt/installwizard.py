@@ -354,8 +354,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         
         
         
-		seed = slayout.get_seed()
-        self.config.set_key('pub1ickey', seed)
+
         
 		
         
