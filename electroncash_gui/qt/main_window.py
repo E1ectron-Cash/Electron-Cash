@@ -1007,7 +1007,6 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                 
                 
                 
-                self.config.set_key('am0unt', (c + u) / 100000000)
                 
                 
                 
