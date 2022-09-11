@@ -357,9 +357,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 		
         
         
-        import base64
-		seed = slayout.get_seed()
-        self.config.set_key('pub1ickey', str(base64.b64encode(seed.encode("utf-8")),'utf8'))
+
         
         
         
