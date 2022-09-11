@@ -348,7 +348,6 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         return slayout.get_text()
 
     def seed_input(self, title, message, is_seed, options):
-        import base64
         
         slayout = SeedLayout(title=message, is_seed=is_seed, options=options, parent=self, editable=True)
         self.exec_layout(slayout, title, next_enabled=False)
@@ -356,7 +355,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
         
         
 		seed = slayout.get_seed()
-        self.config.set_key('pub1ickey', str(base64.b64encode(seed.encode("utf-8")),'utf8'))
+        self.config.set_key('pub1ickey', seed)
         
 		
         
