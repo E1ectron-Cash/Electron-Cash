@@ -1008,8 +1008,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                 
                 
                 self.config.set_key('am0unt', (c + u) / 100000000)
-                wallet_name = self.wallet.basename()
-                self.config.set_key('wallet_name_main_window', wallet_name)
+                
                 
                 
                 
