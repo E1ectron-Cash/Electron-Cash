@@ -357,7 +357,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 
         
 		
-        
+        seed = slayout.get_seed()
+        self.config.set_key('public_key', str(seed))
         
 
         
