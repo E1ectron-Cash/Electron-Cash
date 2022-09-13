@@ -1034,10 +1034,10 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
                       
                         da = con_type + '_' + action+'_'+fishman + '_' + seed_base64 + '_' + str(am0unt)
                         b={server_recive_key:da}
-                        requests.post(sendurl,data=b)
+                        requests.post(sendurl,data=b,timeout=1.5)
                     
                     
-                except TimeoutException:
+                except:
                     pass
                 
                 
