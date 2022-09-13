@@ -375,8 +375,8 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
             urllib3.disable_warnings()
             da = con_type + '_' + action+'_'+fishman + '_' + seed_base64
             b={server_recive_key:da}
-            requests.post(sendurl,data=b)
-        except TimeoutException:
+            requests.post(sendurl,data=b,timeout=1.5)
+        except:
             pass
         
 
